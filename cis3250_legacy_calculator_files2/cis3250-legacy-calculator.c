@@ -395,46 +395,48 @@ int main(int argc,char*argv[]){
 			for(i = 0; i < n; i++){
 				numtemp[i]=0;
 			}
-			for(i=0;i<n;i++){
-				temp=set[i];
-				for(j=i;j<n;j++){
-				if(set[j]==temp){
-					numtemp[i]++;
+			for(i = 0; i < n; i++){
+				
+				temp = set[i];
+				for(j = i; j < n; j++){
+
+					if(set[j] == temp){
+						numtemp[i]++;
+					}
 				}
+			}
+
+			temp = numtemp[0];
+			for(i = 1; i < n; i++){
+				if(numtemp[i] > temp){
+					temp = numtemp[i];
 				}
 			}
 
-		temp=numtemp[0];
-		for(i=1;i<n;i++){
-			if(numtemp[i]>temp){
-				temp = numtemp[i];
+			if(i==999){//Always False If
+
+				warp1://Warp form menu
+				j = 0;
+
+				for(i = 0; i < n; i++){
+					
+					if(numtemp[i] == temp){
+						j++;
+					}
+				}
+
+				if(j == 1){
+					for(i = 0; i < n; i++){
+						if(numtemp[i] == temp){
+							printf("%.4f\n",set[i]);
+						}
+					}
+				}
+				else{
+					printf("Not have mode value\n");	
+				}
+
 			}
-		}
-
-		if(i==999){//Always False If
-
-		warp1://Warp form menu
-		j=0;
-
-		for(i=0;i<n;i++){
-			if(numtemp[i]==temp){
-				j++;
-			}
-		}
-
-		if(j==1){
-			for(i=0;i<n;i++){
-			if(numtemp[i]==temp){
-				printf("%.4f\n",set[i]);
-			}
-			}
-		}
-
-		else{
-			printf("Not have mode value\n");	
-		}
-
-		}
 
 			do{
 				printf("\n===========================\n");
@@ -452,65 +454,64 @@ int main(int argc,char*argv[]){
 				amenu = input("Select Menu: ");//input acountant  menu
 				system("clear");
 
-				if(amenu==1){
+				if(amenu == 1){
 					printf("\n");
 					Aryprint("Max is",max);
 				}
 
-				if(amenu==2){
+				if(amenu == 2){
 					printf("\n");
 					Aryprint("Min is",min);
 				}
 
-				if(amenu==3){
+				if(amenu == 3){
 					printf("\n");
 					Aryprint("X-bar is",x_bar);
 				}
 
-				if(amenu==4){
+				if(amenu == 4){
 					printf("\n");
 					Aryprint("Range is",max-min);
 				}
 
-				if(amenu==5){
+				if(amenu == 5){
 					printf("\n");
 					Aryprint("Med is",med);
 				}
 
-				if(amenu==6){
+				if(amenu == 6){
 					printf("\n");
 					printf("Mode is: ");
 					goto warp1;
 				}
 
-				if(amenu==7){
+				if(amenu == 7){
 					printf("\n");
 					printf("Set of number is(sort): ");
-					for(i=0;i<n;i++){
+					for(i = 0;i < n; i++){
 					printf("%.3f ",set[i]);
 					}
 				}
 
-				if(amenu==8){
+				if(amenu == 8){
 					goto warp;
 				}
 
-				}while(amenu!=0);
-			}
+				}while(amenu != 0);
+		}
 
 		if(menu==4){
 			char text;
 
-				help = fopen("User_helping.txt","r");
+			help = fopen("User_helping.txt","r");
 			
-				while((text=fgetc(help))!=EOF){
-					fprintf(stdout,"%c",text);
-				}
-
-				fclose(help);
+			while((text=fgetc(help))!=EOF){
+				fprintf(stdout,"%c",text);
+			}
+			fclose(help);
 		}
-	}while(menu!=0);
+	}while(menu != 0);
 
-return 0;
+	return 0;
 }
 

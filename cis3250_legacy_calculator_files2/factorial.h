@@ -2,10 +2,10 @@
 #include <stdint.h>
 
 
-/*Finds factorial of: n*/
+/*Finds factorial of parameter n*/
 unsigned long long int fact(int n){
     unsigned long long int fact;
-    fact=1;
+    fact = 1;
 
     for(int i = n; i > 0; i--){
         fact *= i;

@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <stdint.h>
 
-    unsigned long long int fact(int n){/*Factorial function inefficient for values after 20*/
+
+/*Factorial of: n*/
+unsigned long long int fact(int n){
     unsigned long long int fact;
-    int i;
     fact=1;
 
-    for(i=n;i>0;i--){
-        fact*=i;
+    for(int i = n; i > 0; i--){
+        fact *= i;
     }
+
     return fact;
-    }
+}
 

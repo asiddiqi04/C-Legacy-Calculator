@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 
-/*Factorial of: n*/
+/*Finds factorial of: n*/
 unsigned long long int fact(int n){
     unsigned long long int fact;
     fact=1;

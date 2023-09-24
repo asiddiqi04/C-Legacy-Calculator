@@ -1,3 +1,20 @@
+/*
+
+  Name: Adil Siddiqi
+  Program Description:
+  This program is a versatile calculator that offers three modes: Regular Calculator, Scientific Calculator, and Accountant Calculator.
+  - The Regular Calculator provides basic arithmetic operations like addition, subtraction, multiplication, and division.
+  - The Scientific Calculator offers advanced functions including power, factorial, Fibonacci, sine, cosine, tangent, and more.
+  - The Accountant Calculator allows you to perform statistical calculations on a dataset, such as finding the mean, median, mode,
+    maximum, minimum, and range.
+  Additionally, the program provides access to user help and notices. You can select from these options using a menu system.
+
+*/
+
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #define PI 3.1415926535897932384626433832795
@@ -9,7 +26,7 @@
 
 FILE*help;
 
-
+// Gets float from user 
 float input(char*inname){
 	
 	float key;
@@ -29,6 +46,7 @@ float input(char*inname){
 	} while(1);	 
 }
 
+
 float inputAry(char*inname, int num){
 	
 	float key;
@@ -47,6 +65,7 @@ float inputAry(char*inname, int num){
 	} while(1);	 
 }
 
+// Simple arithmetic operations 
 float plus(float adder, float addin){
 	
 	float result;
@@ -70,50 +89,56 @@ float mult(float multer,float multin){
 float divind(float divider,float dividin){
 	
 	float result;
-	result=divider/dividin;
+	result = divider/dividin;
 	return result;
 }
 
+
+// Calculates factorials 
 int factorial(int term)
 {
 
-	if(term==0){
+	if(term == 0){
 		return 1;
 	}
 
 	return term*factorial(term-1);
 }
 
+// Calculates fibonacci numbers
 int fib(int term){
 	
-	if(term==1){
+	if(term == 1){
 		return 0;
 	}
-	if(term==2){
+	if(term == 2){
 		return 1;
 	}
-	return fib(term-1)+fib(term-2);
+	return fib(term - 1) + fib(term - 2);
 }
 
-float power(float base,int pow){
+// Calculates powers
+float power(float base, int pow){
 	
 	int i;
-	float mem=1;
-	for(i=0;i<pow;i++){
-		mem*=base;
+	float mem = 1;
+	for(i = 0; i < pow; i++){
+		mem *= base;
 	}
 	return mem;
 }
 
+// Calculates sine of values given
 float sine(float radius){
 	
 	float val, sin;
 	
 	val = radius * (PI/180);
-	sin = val - (power(val,3)/factorial(3))+(power(val,5)/factorial(5))-(power(val,7)/factorial(7));
+	sin = val - (power(val,3)/factorial(3))+(power(val,5)/factorial(5)) - (power(val,7)/factorial(7));
 	return sin;
 }
 
+// Calculates cosine of values given
 float cosine(float radius){
 	
 	float val, cos;
@@ -122,6 +147,7 @@ float cosine(float radius){
 	return cos;
 }
 
+// Prints out integers 
 int spprint(char*screen,char*sym,int ini,int res){
 	
 	printf("%s %d%s = %d\n",screen,ini,sym,res);
@@ -129,6 +155,7 @@ int spprint(char*screen,char*sym,int ini,int res){
 	return 0;
 }
 
+// Prints out floats 
 float spprintf(char*screen,char*sym,float ini,float res){
 	
 	printf("%s %.4f%s = %.4f\n",screen,ini,sym,res);
@@ -136,12 +163,14 @@ float spprintf(char*screen,char*sym,float ini,float res){
 	return 0;
 }
 
+// prints out floats with two operands 
 float print(char *screen, char *sym, float ini, float upt, float res){
 	printf("%s %.4f %s %.4f = %.4f\n",screen,ini,sym,upt,res);
 
 	return 0;
 }
 
+// Prints out an array 
 float Aryprint(char *screen,float ans){
 	printf("%s : %.4f\n",screen,ans);
 
@@ -149,7 +178,7 @@ float Aryprint(char *screen,float ans){
 }
 
 
-
+// Main function
 int main(int argc,char*argv[]){
 	float a, b, c;
 	float r1, r2;
@@ -184,42 +213,42 @@ int main(int argc,char*argv[]){
 				system("clear");
 
 
-				if(rmenu==1){
-					a=input("Enter value 1 st: ");
-					b=input("Enter value 2 nd: ");
-					c=plus(a,b);
+				if(rmenu == 1){
+					a = input("Enter value 1 st: ");
+					b = input("Enter value 2 nd: ");
+					c = plus(a,b);
 					printf("\n");
 					print("sum of","plus",a,b,c);
 				}
 
-				if(rmenu==2){
-					a=input("Enter value 1 st: ");
-					b=input("Enter value 2 nd: ");
-					c=minus(a,b);
+				if(rmenu == 2){
+					a = input("Enter value 1 st: ");
+					b = input("Enter value 2 nd: ");
+					c = minus(a,b);
 					printf("\n");
 					print("result of","minus",a,b,c);
 				}
 
-				if(rmenu==3){
-					a=input("Enter value 1 st: ");
-					b=input("Enter value 2 nd: ");
-					c=mult(a,b);
+				if(rmenu == 3){
+					a = input("Enter value 1 st: ");
+					b = input("Enter value 2 nd: ");
+					c = mult(a,b);
 					printf("\n");
 					print("result of","x",a,b,c);
 				}
 
-				if(rmenu==4){
-					a=input("Enter value 1 st: ");
-					b=input("Enter value 2 nd: ");
-					c=divind(a,b);
+				if(rmenu == 4){
+					a = input("Enter value 1 st: ");
+					b = input("Enter value 2 nd: ");
+					c = divind(a,b);
 					printf("\n");
 					print("result","/",a,b,c);
 				}
 
-			}while(rmenu!=0);
+			}while(rmenu != 0);
 		}
 
-		if(menu==2){
+		if(menu == 2){
 
 			do{
 			    printf("\n===========================\n");
@@ -240,77 +269,77 @@ int main(int argc,char*argv[]){
 				smenu = input("Select Menu: ");
 				system("clear");
 
-				if(smenu==1){
-					a=input("Enter base(x): ");
-					b=input("Enter power(y): ");
-					c=powerfn(a,b);
+				if(smenu == 1){
+					a = input("Enter base(x): ");
+					b = input("Enter power(y): ");
+					c = powerfn(a,b);
 					printf("\n");
 					print("result of","^",a,b,c);
 				}
 
-				if(smenu==2){
-					a=input("Enter numbers of term: ");
-					c=fact(a);
+				if(smenu == 2){
+					a = input("Enter numbers of term: ");
+					c = fact(a);
 					printf("\n");
 					spprint("Factorial of","!",a,c);
 				}
 
-				if(smenu==3){
-					a=input("Enter numbers of term: ");
-					c=fib(a);
+				if(smenu == 3){
+					a = input("Enter numbers of term: ");
+					c = fib(a);
 					printf("\n");
 					spprint("Fibonacci of"," ",a,c);
 				}
 
-				if(smenu==4){
-					a=input("Enter your value: ");
-					c=sine(a);
+				if(smenu == 4){
+					a = input("Enter your value: ");
+					c = sine(a);
 					printf("\n");
 					spprintf("Sine of"," ",a,c);
 				}
 
-				if(smenu==5){
-					a=input("Enter your value: ");
-					c=cosine(a);
+				if(smenu == 5){
+					a = input("Enter your value: ");
+					c = cosine(a);
 					printf("\n");
 					spprintf("Cosine of"," ",a,c);
 				}
 
-				if(smenu==6){
-					a=input("Enter your value: ");
-					r1=sine(a);
-					r2=cosine(a);
-					c=r1/r2;
+				if(smenu == 6){
+					a = input("Enter your value: ");
+					r1 = sine(a);
+					r2 = cosine(a);
+					c = r1/r2;
 					printf("\n");
 					spprintf("Tangent of"," ",a,c);
 				}
 
-				if(smenu==7){
-					a=input("Enter your value: ");
-					c=sine(a);
+				if(smenu == 7){
+					a = input("Enter your value: ");
+					c = sine(a);
 					printf("\n");
 					spprintf("Cosec of"," ",a,1/c);
 				}
 
-				if(smenu==5){
-					a=input("Enter your value: ");
-					c=cosine(a);
+				if(smenu == 5){
+					a = input("Enter your value: ");
+					c = cosine(a);
 					printf("\n");
 					spprintf("Sec of"," ",a,1/c);
 				}
 
-				if(smenu==8){
-					a=input("Enter your value: ");
-					r1=sine(a);
-					r2=cosine(a);
-					c=r1/r2;
+				if(smenu == 8){
+					a = input("Enter your value: ");
+					r1 = sine(a);
+					r2 = cosine(a);
+					c = r1/r2;
 					printf("\n");
 					spprintf("Cot of"," ",a,1/c);
 				}
 
-				if(smenu==10){
+				if(smenu == 10){
 
-					int operation_number=0;
+					int operation_number = 0;
 					printf("\n\t\tSum of Matrices(1)\t\tTranspose(2)\t\tProduct of Matrices(3)");
 					printf("\n\tEnter an operation command:");
 					scanf("%d",&operation_number);
@@ -322,9 +351,9 @@ int main(int argc,char*argv[]){
 					}
 				}
 
-				if(smenu==11){
+				if(smenu == 11){
 				    
-					int operation_number=0;
+					int operation_number = 0;
 					printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
 					printf("\n\n\n\t\tPlease choose an operation number:");
 					scanf("%d",&operation_number);
@@ -339,10 +368,10 @@ int main(int argc,char*argv[]){
 
 
 
-			}while(smenu!=0);
+			}while(smenu != 0);
 		}
 
-		if(menu==3){
+		if(menu == 3){
 
 			warp:
 
@@ -378,7 +407,7 @@ int main(int argc,char*argv[]){
 			}
 
 			min = set[0];
-			max = set[n-1];
+			max = set[n - 1];
 
 			for(i = 0; i < n; i++){
 				sum += set[i];
@@ -386,7 +415,7 @@ int main(int argc,char*argv[]){
 			x_bar=(sum/n);
 
 			if((n % 2) != 0){
-				med = set[((n + 1) / 2) -1];
+				med = set[((n + 1) / 2) - 1];
 			}
 			else{
 				med = (set[((n + 1) / 2)] + set[((n + 1) / 2) - 1])/2;
@@ -413,7 +442,7 @@ int main(int argc,char*argv[]){
 				}
 			}
 
-			if(i==999){//Always False If
+			if(i == 999){//Always False If
 
 				warp1://Warp form menu
 				j = 0;
@@ -488,8 +517,8 @@ int main(int argc,char*argv[]){
 				if(amenu == 7){
 					printf("\n");
 					printf("Set of number is(sort): ");
-					for(i = 0;i < n; i++){
-					printf("%.3f ",set[i]);
+					for(i = 0; i < n; i++){
+						printf("%.3f ",set[i]);
 					}
 				}
 

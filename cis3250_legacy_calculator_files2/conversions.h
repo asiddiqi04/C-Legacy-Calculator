@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void time_conversion() {
+void time() {
 
     int from, to;
     double t1, t2;

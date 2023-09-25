@@ -8,6 +8,8 @@ unsigned long long int fact(int n){
     fact = 1;
 
     for(int i = n; i > 0; i--){
+
+        /* Multiply current factorial by 1 */
         fact *= i;
     }
 

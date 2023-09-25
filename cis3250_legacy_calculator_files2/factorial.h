@@ -1,14 +1,18 @@
 #include <stdio.h>
 #include <stdint.h>
 
-    unsigned long long int fact(int n){/*Factorial function inefficient for values after 20*/
-    unsigned long long int fact;
-    int i;
-    fact=1;
 
-    for(i=n;i>0;i--){
-        fact*=i;
+/*Finds factorial of parameter n*/
+unsigned long long int fact(int n){
+    unsigned long long int fact;
+    fact = 1;
+
+    for(int i = n; i > 0; i--){
+
+        /* Multiply current factorial by 1 */
+        fact *= i;
     }
+
     return fact;
-    }
+}
 

@@ -13,6 +13,6 @@ Additionally, the program provides access to user help and notices. You can sele
 # How to run it
 
 * Ensure you are in the cis3250_legacy_calculator_files2 directory.
-* Enter make in the command line to compile the source code
-* To run the program, enter./assignment2 in the command line
+* Enter ```make``` in the command line to compile the source code
+* To run the program, enter ```./assignment2``` in the command line
 

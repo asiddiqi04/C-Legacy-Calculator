@@ -22,6 +22,7 @@
 #include "matrices.h"
 #include "powerfunction.h"
 #include "conversions.h"
+#include "grade.h"
 #include<string.h>
 
 FILE*help;
@@ -193,6 +194,7 @@ int main(int argc,char*argv[]){
 		printf("1.Regular Calculator\n");
 		printf("2.Scientific Calculator\n");
 		printf("3.Acountant Calculator\n");
+		printf("4.Grade Calculator\n");
 		printf("4.Read Help and Notice\n");
 		printf("0.Exit\n");
 		menu = input("Select Menu: ");//input main menu
@@ -528,8 +530,25 @@ int main(int argc,char*argv[]){
 
 				}while(amenu != 0);
 		}
-
 		if(menu==4){
+			int numAssessments = input("Enter the number of assessments: ");
+			
+			float grades [numAssessments];
+			float weights [numAssessments];
+
+			for (int i = 0; i < numAssessments; i++){
+				grades[i] = input("Enter grade: ");
+				weights[i] = input("Enter weight: ");
+			}
+
+			float finalGrade = gradeCalculator(numAssessments, grades, weights);
+
+			printf("Final grade = %f\n", finalGrade);
+
+		}
+
+
+		if(menu==5){
 			char text;
 
 			help = fopen("User_helping.txt","r");

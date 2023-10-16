@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 void time() {
 
@@ -251,49 +252,123 @@ void temp() {
     }
 }
 
-int convert(int number,int base){
-    if(number == 0 )
-        return number;
-    return (number % base) + 10*convert(number / base, base);
+
+//The 2 functions below were taken from: https://www.geeksforgeeks.org/convert-base-decimal-vice-versa/
+
+int val(char c)
+{
+    if (c >= '0' && c <= '9')
+        return (int)c - '0';
+    else
+        return (int)c - 'A' + 10;
+}
+ 
+// Function to convert a number from given base 'b'
+// to decimal
+int toDeci(char *str, int base)
+{
+    int len = strlen(str);
+    int power = 1; // Initialize power of base
+    int num = 0;  // Initialize result
+    int i;
+ 
+    for (i = len - 1; i >= 0; i--)
+    {
+        // A digit in input number must be
+        // less than number's base
+        if (val(str[i]) >= base)
+        {
+           printf("Invalid Number");
+           return -1;
+        }
+ 
+        num += val(str[i]) * power;
+        power = power * base;
+    }
+ 
+    return num;
 }
 
-void baseTwoToTen(){
-    //Base 2 to 10
 
-    // char input[128];
-    int input;
 
-    int binary[32]; // Assuming a 32-bit binary representation
+
+//The 3 functions below were taken from: https://www.geeksforgeeks.org/convert-base-decimal-vice-versa/
+
+char reVal(int num)
+{
+    if (num >= 0 && num <= 9)
+        return (char)(num + '0');
+    else
+        return (char)(num - 10 + 'A');
+}
+ 
+// Utility function to reverse a string
+void strev(char *str)
+{
+    int len = strlen(str);
+    int i;
+    for (i = 0; i < len/2; i++)
+    {
+        char temp = str[i];
+        str[i] = str[len-i-1];
+        str[len-i-1] = temp;
+    }
+}
+ 
+// Function to convert a given decimal number
+// to a base 'base' 
+char* fromDeci(char res[], int base, int inputNum)
+{
+    int index = 0;  // Initialize index of result
+ 
+    // Convert input number is given base by repeatedly
+    // dividing it by base and taking remainder
+    while (inputNum > 0)
+    {
+        res[index++] = reVal(inputNum % base);
+        inputNum /= base;
+    }
+    res[index] = '\0';
+ 
+    // Reverse the result
+    strev(res);
+ 
+    return res;
+}
+
+
+void baseXToTen(int base){
+    char input[128];
     int i = 0;
 
-    printf("base 2 to 10");
+    printf("Base %d to 10\n",base);
 
+    printf("\nEnter number to convert: ");
+    scanf("%s", input);
+
+    
+    printf("\nResult = %d",toDeci(input,base));
+
+}
+
+void baseTenToX(int base){
+
+    // char input[128];
+    char buffer[128];
+    int input;
+
+    printf("Base 10 to %d\n",base);
+
+    printf("\nEnter number to convert in base 10: ");
     scanf("%d", &input);
 
-    while (decimalNumber > 0) {
-        binary[i] = decimalNumber % 2;
-        decimalNumber = decimalNumber / 2;
-        i++;
-    }
-
-    printf("Binary: ");
-    for (int j = i - 1; j >= 0; j--) {
-        printf("%d", binary[j]);
-    }
-    printf("\n");
     
-    //printf("Result = %d",convert(27,16));
-    // baseInput(input);
-
+    printf("\nResult = %s",fromDeci(buffer,base,input));
 
 }
 
 
-void baseInput(char * input1){
 
-
-
-}
 
 void baseConversion(){
     printf("Base Conversion");
@@ -301,14 +376,14 @@ void baseConversion(){
     int from = 0;
     int to = 0;
 
-    //Base 2 to base 10 - 2,1
-    //base 10 base 2 1,2
+    //!Base 2 to base 10 - 2,1
+    //!base 10 base 2 1,2
 
-    //base 2 base 16 2,3
-    //base 16 base 2 3,2
+    //?base 2 base 16 2,3
+    //?base 16 base 2 3,2
 
-    //base 10 to base 16 1,3
-    //base 16 to base 10 3,1
+    //!base 10 to base 16 1,3
+    //!base 16 to base 10 3,1
 
     printf("\n\n\n\t\t\tBase 10(1)\t\t\tBase 2 (2)\t\t\tBase 16 (3)");
     printf("\n\n\n\t\t\tConvert from (number):");
@@ -318,9 +393,10 @@ void baseConversion(){
 
     if(from == 2 && to == 1){
         //call 2 to 10
-        baseTwoToTen();
+        baseXToTen(2);
     }
     else if (from == 1 && to == 2){
+        baseTenToX(2);
         //10 to 2
     }
     else if(from == 2 && to == 3){
@@ -330,9 +406,11 @@ void baseConversion(){
         //16 to 2
     }
     else if(from == 1 && to == 3){
+        baseTenToX(16);
         //10 to 16
     }
     else if(from == 3 && to == 1){
+        baseXToTen(16);
         //16 to 10
     }
     else{

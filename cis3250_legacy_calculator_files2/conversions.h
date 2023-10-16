@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 void time() {
 
@@ -249,3 +250,100 @@ void temp() {
         }
     }
 }
+
+int convert(int number,int base){
+    if(number == 0 )
+        return number;
+    return (number % base) + 10*convert(number / base, base);
+}
+
+void baseTwoToTen(){
+    //Base 2 to 10
+
+    // char input[128];
+    int input;
+
+    int binary[32]; // Assuming a 32-bit binary representation
+    int i = 0;
+
+    printf("base 2 to 10");
+
+    scanf("%d", &input);
+
+    while (decimalNumber > 0) {
+        binary[i] = decimalNumber % 2;
+        decimalNumber = decimalNumber / 2;
+        i++;
+    }
+
+    printf("Binary: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", binary[j]);
+    }
+    printf("\n");
+    
+    //printf("Result = %d",convert(27,16));
+    // baseInput(input);
+
+
+}
+
+
+void baseInput(char * input1){
+
+
+
+}
+
+void baseConversion(){
+    printf("Base Conversion");
+
+    int from = 0;
+    int to = 0;
+
+    //Base 2 to base 10 - 2,1
+    //base 10 base 2 1,2
+
+    //base 2 base 16 2,3
+    //base 16 base 2 3,2
+
+    //base 10 to base 16 1,3
+    //base 16 to base 10 3,1
+
+    printf("\n\n\n\t\t\tBase 10(1)\t\t\tBase 2 (2)\t\t\tBase 16 (3)");
+    printf("\n\n\n\t\t\tConvert from (number):");
+    scanf("%d", &from);
+    printf("\n\n\n\t\t\tConvert to (number):");
+    scanf("%d", &to);
+
+    if(from == 2 && to == 1){
+        //call 2 to 10
+        baseTwoToTen();
+    }
+    else if (from == 1 && to == 2){
+        //10 to 2
+    }
+    else if(from == 2 && to == 3){
+        //2 to 16
+    }
+    else if(from == 3 && to == 2){
+        //16 to 2
+    }
+    else if(from == 1 && to == 3){
+        //10 to 16
+    }
+    else if(from == 3 && to == 1){
+        //16 to 10
+    }
+    else{
+        printf("error: out of range/ incorrect value");
+    }
+
+
+    //error check if numbers are in range or the same (invalid)
+    //add a do while loop to loop input
+}
+
+
+
+

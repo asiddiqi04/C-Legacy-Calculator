@@ -543,7 +543,9 @@ int main(int argc,char*argv[]){
 
 			float finalGrade = gradeCalculator(numAssessments, grades, weights);
 
-			printf("Final grade = %f\n", finalGrade);
+			if (finalGrade >= 0){
+				printf("Final grade = %f\n", finalGrade);
+			}
 
 		}
 

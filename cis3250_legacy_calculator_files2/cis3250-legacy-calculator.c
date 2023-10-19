@@ -533,6 +533,8 @@ int main(int argc,char*argv[]){
 		if(menu==4){
 			int numAssessments = input("Enter the number of assessments: ");
 			
+			int dropLowest = input("Will the lowest grade be dropped (enter 1 for yes and 0 for no): ");
+
 			float grades [numAssessments];
 			float weights [numAssessments];
 
@@ -541,11 +543,7 @@ int main(int argc,char*argv[]){
 				weights[i] = input("Enter weight: ");
 			}
 
-			float finalGrade = gradeCalculator(numAssessments, grades, weights);
-
-			if (finalGrade >= 0){
-				printf("Final grade = %f\n", finalGrade);
-			}
+			gradeCalculator(numAssessments, grades, weights, dropLowest);
 
 		}
 

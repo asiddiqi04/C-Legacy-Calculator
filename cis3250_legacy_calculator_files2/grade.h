@@ -1,32 +1,38 @@
 #include <stdio.h>
 
-float gradeCalculator(int numAssessments, float grades [], float weights []){
+void gradeCalculator(int numAssessments, float grades [], float weights [], int dropLowest){
     			
-    float grade = 0.0;
-    float weight = 0.0;
+    float grade = 0.0, weight = 0.0, lowest = grades[0], lowestWeight;
 
     for (int a = 0; a < numAssessments; a++){
-            if (grades[a] >= 0 && weights[a] >= 0){
-                grade = grade + (grades[a] * weights[a]);
-                weight = weight + weights[a];
+        if (grades[a] >= 0 && weights[a] >= 0){
+            if (grades[a] < lowest){
+                lowest = grades[a];
+                lowestWeight = weights[a];
             }
-            else if (grades[a] < 0){
-                printf("Grade cannot be negative\n");
-                return -1;
-            }
-            else if (weights[a] < 0){
-                printf("Weight cannot be negative\n");
-                return -1;
-            }
+            grade = grade + (grades[a] * weights[a]);
+            weight = weight + weights[a];
+        }
+        else if (grades[a] < 0){
+            printf("Grade cannot be negative\n");
+            return;
+        }
+        else if (weights[a] < 0){
+            printf("Weight cannot be negative\n");
+            return;
+        }
     }
 
     if (weight > 100){
         printf("Sum of weights cannot exceed 100\n");
-        return -1;
+        return;
     }
 
-    grade = grade / weight;
+    if (dropLowest == 1){
+        grade = grade - (lowest * lowestWeight);
+        weight = weight - lowestWeight;
+    }
 
-    return grade;
+    printf("Current grade = %.2f%\n", grade/weight);
 
 }

@@ -58,7 +58,7 @@ void matrix_sum() {
 
 // Function to perform matrix multiplication
 void matrix_product() {
-    int i, j, n1, m1, n2, m2, l, k;
+    int i, j, n1, m1, n2, m2, k;
 
     // Get dimensions of matrices
     printf("Enter the number of rows of matrix 1:");

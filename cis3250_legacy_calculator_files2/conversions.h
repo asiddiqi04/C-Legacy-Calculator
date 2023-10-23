@@ -182,7 +182,7 @@ void time() {
 
 void temp() {
     int from, to;
-    double t1, t2, t3;
+    double t1, t2;
 
     // Display conversion options
     printf("\n\n\n\t\t\tCelsius(1)\t\t\tFahrenheit(2)\t\t\tKelvin(3)");
@@ -339,7 +339,6 @@ char* fromDeci(char res[], int base, int inputNum)
 
 void baseXToTen(int base){
     char input[128];
-    int i = 0;
 
     printf("Base %d to 10\n",base);
 

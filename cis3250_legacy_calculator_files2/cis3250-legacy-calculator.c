@@ -248,9 +248,19 @@ int main(int argc,char*argv[]){
 				if(rmenu == 4){
 					a = input("Enter value 1 st: ");
 					b = input("Enter value 2 nd: ");
-					c = divind(a,b);
-					printf("\n");
-					print("result","/",a,b,c);
+
+					if(b == 0){
+						printf("Error divisor cannot be 0\n");
+					}
+					else{
+
+						c = divind(a,b);
+						printf("\n");
+						print("result","/",a,b,c);
+
+					}
+
+					
 				}
 
 			}while(rmenu != 0);
@@ -287,10 +297,12 @@ int main(int argc,char*argv[]){
 				}
 
 				if(smenu == 2){
+
+					unsigned long long int x;
 					a = input("Enter numbers of term: ");
-					c = fact(a);
+					x = fact((int)a);
 					printf("\n");
-					spprint("Factorial of","!",a,c);
+					spprint("Factorial of","!",a,x);
 				}
 
 				if(smenu == 3){
@@ -671,6 +683,7 @@ int main(int argc,char*argv[]){
 			}
 			fclose(help);
 		}
+		
 	}while(menu != 0);
 
 	return 0;

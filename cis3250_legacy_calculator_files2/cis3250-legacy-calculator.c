@@ -38,7 +38,7 @@ float input(char*inname){
 	 	
 		if(!scanf("%f",&key)){
 			
-			scanf("%s",&temp);//recieve temp
+			scanf("%s",temp);//recieve temp
 	    	printf("Please try again!\n");
 		}
 		else{
@@ -57,7 +57,7 @@ float inputAry(char*inname, int num){
 		printf("%s[%d]: ",inname,num+1);
 
 	 	if(!scanf("%f",&key)){
-			scanf("%s",&temp);
+			scanf("%s",temp);
 	      	printf("Please try again!\n");
 		}
 		else{
@@ -183,7 +183,6 @@ float Aryprint(char *screen,float ans){
 int main(int argc,char*argv[]){
 	float a, b, c;
 	float r1, r2;
-	char sym;
 	int menu, rmenu, smenu;
 
 	int binary1, binary2;
@@ -248,9 +247,19 @@ int main(int argc,char*argv[]){
 				if(rmenu == 4){
 					a = input("Enter value 1 st: ");
 					b = input("Enter value 2 nd: ");
-					c = divind(a,b);
-					printf("\n");
-					print("result","/",a,b,c);
+
+					if(b == 0){
+						printf("Error divisor cannot be 0\n");
+					}
+					else{
+
+						c = divind(a,b);
+						printf("\n");
+						print("result","/",a,b,c);
+
+					}
+
+					
 				}
 
 			}while(rmenu != 0);
@@ -287,10 +296,12 @@ int main(int argc,char*argv[]){
 				}
 
 				if(smenu == 2){
+
+					unsigned long long int x;
 					a = input("Enter numbers of term: ");
-					c = fact(a);
+					x = fact((int)a);
 					printf("\n");
-					spprint("Factorial of","!",a,c);
+					spprint("Factorial of","!",a,x);
 				}
 
 				if(smenu == 3){
@@ -505,18 +516,11 @@ int main(int argc,char*argv[]){
 
 		if(menu == 3){
 
-			warp:
 
-				//system("clear");
-				printf("\n===========================\n");
-				printf("Accountant Calculator Menu\n");
-				printf("===========================\n");
-				printf("Please set value first\n");
-				printf("\n");
 
 			int n,i,j,amenu;
 			float rest,max,min,x_bar=0,sum=0;
-			float med,mod,count;
+			float med;
 			int temp;
 
 				n=input("Enter number of term: ");
@@ -576,26 +580,26 @@ int main(int argc,char*argv[]){
 
 			if(i == 999){//Always False If
 
-				warp1://Warp form menu
-				j = 0;
+				// warp1://Warp form menu
+				// j = 0;
 
-				for(i = 0; i < n; i++){
+				// for(i = 0; i < n; i++){
 					
-					if(numtemp[i] == temp){
-						j++;
-					}
-				}
+				// 	if(numtemp[i] == temp){
+				// 		j++;
+				// 	}
+				// }
 
-				if(j == 1){
-					for(i = 0; i < n; i++){
-						if(numtemp[i] == temp){
-							printf("%.4f\n",set[i]);
-						}
-					}
-				}
-				else{
-					printf("Not have mode value\n");	
-				}
+				// if(j == 1){
+				// 	for(i = 0; i < n; i++){
+				// 		if(numtemp[i] == temp){
+				// 			printf("%.4f\n",set[i]);
+				// 		}
+				// 	}
+				// }
+				// else{
+				// 	printf("Not have mode value\n");	
+				// }
 
 			}
 
@@ -643,7 +647,25 @@ int main(int argc,char*argv[]){
 				if(amenu == 6){
 					printf("\n");
 					printf("Mode is: ");
-					goto warp1;
+					j = 0;
+
+					for(i = 0; i < n; i++){
+						
+						if(numtemp[i] == temp){
+							j++;
+						}
+					}
+
+					if(j == 1){
+						for(i = 0; i < n; i++){
+							if(numtemp[i] == temp){
+								printf("%.4f\n",set[i]);
+							}
+						}
+					}
+					else{
+						printf("Not have mode value\n");	
+					}
 				}
 
 				if(amenu == 7){
@@ -655,8 +677,14 @@ int main(int argc,char*argv[]){
 				}
 
 				if(amenu == 8){
-					goto warp;
-				}
+
+					//system("clear");
+					printf("\n===========================\n");
+					printf("Accountant Calculator Menu\n");
+					printf("===========================\n");
+					printf("Please set value first\n");
+					printf("\n");
+					}
 
 				}while(amenu != 0);
 		}
@@ -671,6 +699,7 @@ int main(int argc,char*argv[]){
 			}
 			fclose(help);
 		}
+		
 	}while(menu != 0);
 
 	return 0;

@@ -367,6 +367,78 @@ void baseTenToX(int base){
 
 }
 
+void baseTwoToHex(const char* binary) {
+    int len = strlen(binary);
+    int i, j = 0, decimal = 0;
+    char hex[17]; 
+
+    if (len % 4 != 0) {
+        // Pad the binary input with leading zeros to ensure groups of 4 bits
+        int pad_len = 4 - (len % 4);
+        char padded_binary[64];
+        memset(padded_binary, '0', pad_len); //adds 0's to the left side of the number to ensure it is divisible by 4
+        strcpy(padded_binary + pad_len, binary);
+        len += pad_len;
+        binary = padded_binary;
+    }
+
+    printf("Hexadecimal: ");
+
+    for (i = 0; i < len; i++) {
+        // Calculate the decimal value of each digit and update the total 'decimal' value.
+        decimal = decimal * 2 + (binary[i] - '0');
+        printf("DECIMAL = %d\nBINARY [i] = %d\n'0' = %d\nBINARTY[i] - '0' = %d\n",decimal, binary[i],'0',binary[i]-'0');
+        if ((i + 1) % 4 == 0) {
+            if (j < 16) { // Check bounds before writing to hex
+                if (decimal < 10) {
+                    hex[j++] = decimal + '0';
+                } else {
+                    hex[j++] = decimal - 10 + 'A';
+                }
+                decimal = 0;
+            } else {
+                printf("Hexadecimal result is too long for the provided input.\n");
+                return;
+            }
+        }
+    }
+
+    hex[j] = '\0';
+
+    printf("%s\n", hex);
+}
+
+
+// Function to convert a hexadecimal string to binary
+void hexToBinary(const char* hex) {
+    int len = strlen(hex);
+    int i, j;
+    char binary[64];
+
+    printf("Binary: ");
+
+    for (i = 0; i < len; i++) {
+        int decimal;
+        if (hex[i] >= '0' && hex[i] <= '9') {
+            decimal = hex[i] - '0'; // Convert hexadecimal to decimal (0-9)
+        } else if (hex[i] >= 'A' && hex[i] <= 'F') {
+            decimal = hex[i] - 'A' + 10; // Convert hexadecimal to decimal (10-15)
+        } else {
+            printf("Invalid hexadecimal input.\n");
+            return;
+        }
+
+        for (j = 3; j >= 0; j--) {
+            binary[i * 4 + 3 - j] = ((decimal >> j) & 1) + '0'; // Convert decimal to binary
+        }
+    }
+
+    // Add the null terminator to the binary string
+    binary[len * 4] = '\0';
+
+    printf("%s\n", binary); // Print the binary result
+}
+
 
 
 
@@ -375,15 +447,7 @@ void baseConversion(){
 
     int from = 0;
     int to = 0;
-
-    //!Base 2 to base 10 - 2,1
-    //!base 10 base 2 1,2
-
-    //?base 2 base 16 2,3
-    //?base 16 base 2 3,2
-
-    //!base 10 to base 16 1,3
-    //!base 16 to base 10 3,1
+    char input[128];
 
     printf("\n\n\n\t\t\tBase 10(1)\t\t\tBase 2 (2)\t\t\tBase 16 (3)");
     printf("\n\n\n\t\t\tConvert from (number):");
@@ -401,9 +465,15 @@ void baseConversion(){
     }
     else if(from == 2 && to == 3){
         //2 to 16
+        printf("Enter a binary number: ");
+        scanf("%s",input);
+        baseTwoToHex(input);
     }
     else if(from == 3 && to == 2){
         //16 to 2
+        printf("Enter a hexadecimal number: ");
+        scanf("%s",input);
+        hexToBinary(input);
     }
     else if(from == 1 && to == 3){
         baseTenToX(16);

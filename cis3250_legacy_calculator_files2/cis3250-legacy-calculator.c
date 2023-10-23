@@ -370,6 +370,7 @@ int main(int argc,char*argv[]){
 					switch(operation_number){
 						case 1: temp();break;
 						case 2: time();break;
+						case 3: baseConversions();break;
 					}
 					break;
 

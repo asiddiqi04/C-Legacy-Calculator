@@ -387,7 +387,6 @@ void baseTwoToHex(const char* binary) {
     for (i = 0; i < len; i++) {
         // Calculate the decimal value of each digit and update the total 'decimal' value.
         decimal = decimal * 2 + (binary[i] - '0');
-        printf("DECIMAL = %d\nBINARY [i] = %d\n'0' = %d\nBINARTY[i] - '0' = %d\n",decimal, binary[i],'0',binary[i]-'0');
         if ((i + 1) % 4 == 0) {
             if (j < 16) { // Check bounds before writing to hex
                 if (decimal < 10) {

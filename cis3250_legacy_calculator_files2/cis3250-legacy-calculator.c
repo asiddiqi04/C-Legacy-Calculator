@@ -363,7 +363,7 @@ int main(int argc,char*argv[]){
 				if(smenu == 11){
 				    
 					int operation_number = 0;
-					printf("\n\n\n\t\tTemperature(1)\t\tTime(2)");
+					printf("\n\n\n\t\tTemperature(1)\t\tTime(2)\t\tConversions(3)");
 					printf("\n\n\n\t\tPlease choose an operation number:");
 					scanf("%d",&operation_number);
 

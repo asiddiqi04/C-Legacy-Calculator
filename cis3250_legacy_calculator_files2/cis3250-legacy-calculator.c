@@ -22,7 +22,7 @@
 #include "matrices.h"
 #include "powerfunction.h"
 #include "conversions.h"
-#include "grade.h"
+#include "addSubtract.h"
 #include<string.h>
 
 FILE*help;
@@ -186,6 +186,13 @@ int main(int argc,char*argv[]){
 	char sym;
 	int menu, rmenu, smenu;
 
+	int binary1, binary2;
+    int octal1, octal2;
+    int hex1, hex2;
+
+    int choice;
+    int operation;
+
 
 	do{
 		printf("\n======\n");
@@ -194,7 +201,6 @@ int main(int argc,char*argv[]){
 		printf("1.Regular Calculator\n");
 		printf("2.Scientific Calculator\n");
 		printf("3.Acountant Calculator\n");
-		printf("4.Grade Calculator\n");
 		printf("4.Read Help and Notice\n");
 		printf("0.Exit\n");
 		menu = input("Select Menu: ");//input main menu
@@ -267,6 +273,7 @@ int main(int argc,char*argv[]){
 				printf("9.Cot (cot x)\n");
 				printf("10.Matrix functions\n");
 				printf("11.Conversion functions\n");
+				printf("12.Binary, Octal, Hex Calculator\n");
 				printf("0.Back\n");
 				smenu = input("Select Menu: ");
 				system("clear");
@@ -366,6 +373,128 @@ int main(int argc,char*argv[]){
 					}
 					break;
 
+				}
+
+				if(smenu == 12){
+
+					printf("\n1. Binary");
+					printf("\n2. Octal");
+					printf("\n3. Hexadecimal");
+
+					printf("\nEnter base: ");
+					scanf("%d", &choice);
+
+					if(choice == 1)
+					{
+						printf("\n1. Add");
+						printf("\n2. Subtract");
+
+						printf("\nEnter operation: ");
+						scanf("%d", &operation);
+
+						if(operation == 1)
+						{
+							printf("Enter the first binary number: ");
+							scanf("%d", &binary1);
+
+							printf("Enter the second binary number: ");
+							scanf("%d", &binary2);
+
+							//int sum = binaryAddition(binary1, binary2);
+							int sum = binary1 + binary2;
+							printf("Sum of the two binary numbers: %d\n", sum);
+
+
+						}
+
+						else if ( operation == 2)
+						{
+
+							printf("Enter the first binary number: ");
+							scanf("%d", &binary1);
+
+							printf("Enter the second binary number: ");
+							scanf("%d", &binary2);
+
+							int sum = binarySubtraction(binary1, binary2);
+
+							printf("Difference of the two binary numbers: %d\n", sum);
+
+						}
+
+					}
+
+					if(choice == 2)
+					{
+						//Octal
+						printf("\n1. Add");
+						printf("\n2. Subtract");
+
+						printf("\nEnter operation: ");
+						scanf("%d", &operation);
+
+						if(operation == 1)
+						{
+							printf("Enter the first octal number: ");
+							scanf("%o", &octal1);
+
+							printf("Enter the second octal number: ");
+							scanf("%o", &octal2);
+
+							int sum = octalAddition(octal1, octal2);
+							
+							printf("Sum of the two octal numbers: %o\n", sum);
+
+
+						}
+						else if(operation == 2)
+						{
+							printf("Enter the first octal number: ");
+							scanf("%o", &octal1);
+
+							printf("Enter the second octal number: ");
+							scanf("%o", &octal2);
+
+							int difference = octalSubtract(octal1, octal2);
+							printf("Difference of the two octal numbers: %o\n",difference);
+						}
+					}
+
+					if(choice == 3)
+					{
+						printf("\n1. Add");
+						printf("\n2. Subtract");
+
+						printf("\nEnter operation: ");
+						scanf("%d", &operation);
+
+						if(operation == 1)
+						{
+							printf("Enter the first hex number: ");
+							scanf("%x", &hex1);
+
+							printf("Enter the second hex number: ");
+							scanf("%x", &hex2);
+
+							int sum = hexAdd(hex1, hex2);
+							
+							printf("Sum of the two hex numbers: %x\n", sum);
+
+
+						}
+						else if(operation == 2)
+						{
+							printf("Enter the first octal number: ");
+							scanf("%x", &hex1);
+
+							printf("Enter the second octal number: ");
+							scanf("%x", &hex2);
+
+							int difference = hexSubtract(octal1, octal2);
+							printf("Difference of the two hex numbers: %x\n",difference);
+						}
+
+					}
 				}
 
 
@@ -530,25 +659,8 @@ int main(int argc,char*argv[]){
 
 				}while(amenu != 0);
 		}
+
 		if(menu==4){
-			int numAssessments = input("Enter the number of assessments: ");
-			
-			int dropLowest = input("Will the lowest grade be dropped (enter 1 for yes and 0 for no): ");
-
-			float grades [numAssessments];
-			float weights [numAssessments];
-
-			for (int i = 0; i < numAssessments; i++){
-				grades[i] = input("Enter grade: ");
-				weights[i] = input("Enter weight: ");
-			}
-
-			gradeCalculator(numAssessments, grades, weights, dropLowest);
-
-		}
-
-
-		if(menu==5){
 			char text;
 
 			help = fopen("User_helping.txt","r");

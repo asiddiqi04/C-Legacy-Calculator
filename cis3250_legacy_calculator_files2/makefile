@@ -1,4 +1,4 @@
-HFILES = conversions.h factorial.h matrices.h powerfunction.h grade.h
+HFILES = conversions.h factorial.h matrices.h powerfunction.h grade.h addSubtract.h
 
 assignment2: cis3250-legacy-calculator.o
 	gcc -std=c99 -Wall cis3250-legacy-calculator.o -g -o assignment2

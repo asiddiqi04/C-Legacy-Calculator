@@ -16,3 +16,22 @@ Additionally, the program provides access to user help and notices. You can sele
 * Enter ```make``` in the command line to compile the source code
 * To run the program, enter ```./assignment2``` in the command line
 
+# Modifications Made
+
+Pair 1 (Braedan and Elijah):
+Added functionality for converting between common bases (base 2, base 10, base 16).
+Completed
+Remove goto statements
+Validate user input
+
+Pair 2 (Tanveer and Benjamin):
+Added Grade Calculator Function
+Completed
+Improve variable/function names to be more descriptive
+Add more comments where needed
+
+
+Pair 3 (Adil and Mohammad):
+Add different Base additions/subtraction (Completed)
+Move functions to improve modularity (Partially Completed)
+Handle edge cases (divide by zero/ factorial of negative numbers) 
